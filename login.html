@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Ticket Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="movieloginstyle.css" />
+</head>
+
+<body>
+  <div class="container-fluid d-flex p-0 m-0">
+    <!-- Sidebar -->
+    <div class="sidebar text-white p-4">
+      <div class="text-center mb-4">
+        <img src="logo.png" alt="Muzii Logo" class="img-fluid mb-2" style="max-height: 40px;" />
+        <h4 class="fw-bold text-white">Muzii Tickets</h4>
+      </div>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-3">
+          <a class="nav-link text-white" href="home.html"><i class="fas fa-home me-2"></i>Home</a>
+        </li>
+        <li class="nav-item mb-3">
+          <a class="nav-link text-white" href="register.html"><i class="fas fa-user-plus me-2"></i>Register</a>
+        </li>
+        <li class="nav-item mb-3">
+          <a class="nav-link text-warning fw-bold" href="login.html"><i class="fas fa-users me-2"></i>Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="admin.html"><i class="fas fa-user me-2"></i>Admin</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Login Form -->
+    <div class="main-container d-flex justify-content-center align-items-center flex-grow-1 bg-light"
+      style="height: 100vh;">
+      <div class="login-box p-4 bg-white rounded shadow-sm" style="width: 430px;">
+        <div class="text-center mb-3">
+          <h6><b>Login</b></h6>
+        </div>
+        <form id="loginForm">
+          <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input type="email" class="form-control" placeholder="Enter email" required />
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="Password" required />
+          </div>
+          <div class="text-end mb-3">
+            <a href="#" class="text-decoration-none">Forgot password?</a>
+          </div>
+          <div class="d-grid mb-2">
+            <button type="submit" class="btn btn-primary fw-bold">Login</button>
+          </div>
+          <div class="text-center">
+            New user? <a href="register.html">Click here to register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const loginForm = document.getElementById("loginForm");
+
+      if (loginForm) {
+        loginForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const email = document.querySelector('input[type="email"]').value;
+          const password = document.querySelector('input[type="password"]').value;
+
+          if (email && password) {
+
+            const fakeName = "Muzii User";
+
+            localStorage.setItem("userEmail", email);
+            localStorage.setItem("username", fakeName);
+            localStorage.setItem("loggedIn", "true");
+
+            window.location.href = "dashboard.html";
+          } else {
+            alert("Please enter both email and password.");
+          }
+        });
+      }
+
+      const city = localStorage.getItem("selectedCity");
+      if (city && document.querySelector(".city-display")) {
+        document.querySelector(".city-display").innerText = city;
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muzii | Choose City</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="movieloginstyle.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    .background-frame {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      border: none;
+      filter: blur(1px);
+      z-index: -1;
+    }
+
+    .city-box {
+      max-width: 900px;
+      margin: 100px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .city-icon {
+      width: 50px;
+      height: 50px;
+    }
+
+    .city-name {
+      margin-top: 5px;
+      font-weight: 600;
+    }
+
+    .btn-location {
+      background-color: #e63946;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- BG dashbaord-->
+  <iframe src="dashboard.html" class="background-frame"></iframe>
+
+  <!-- City Box -->
+  <div class="city-box text-center">
+    <h4 class="mb-4">Select Your City</h4>
+
+    <!-- Detect location -->
+    <button class="btn-location mb-4" onclick="detectLocation()">
+      <i class="fas fa-location-arrow me-2"></i>Detect my location
+    </button>
+
+    <!-- Cities -->
+    <div class="row justify-content-center">
+      <div class="col-4 col-sm-3 col-md-2 text-center city-item" onclick="goToLogin('Mumbai')">
+        <img src="https://cdn-icons-png.flaticon.com/512/2936/2936882.png" class="city-icon" />
+        <div class="city-name">Mumbai</div>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2 text-center city-item" onclick="goToLogin('Delhi')">
+        <img src="https://cdn-icons-png.flaticon.com/512/3176/3176369.png" class="city-icon" />
+        <div class="city-name">Delhi-NCR</div>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2 text-center city-item" onclick="goToLogin('Bengaluru')">
+        <img src="https://cdn-icons-png.flaticon.com/512/2936/2936882.png" class="city-icon" />
+        <div class="city-name">Bengaluru</div>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2 text-center city-item" onclick="goToLogin('Chennai')">
+        <img src="https://cdn-icons-png.flaticon.com/512/3176/3176369.png" class="city-icon" />
+        <div class="city-name">Chennai</div>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2 text-center city-item" onclick="goToLogin('Pune')">
+        <img src="https://cdn-icons-png.flaticon.com/512/3176/3176369.png" class="city-icon" />
+        <div class="city-name">Pune</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function detectLocation() {
+      alert("Location detected: Pune");
+      goToLogin("Pune");
+    }
+
+    function goToLogin(city) {
+      localStorage.setItem("selectedCity", city);
+      window.location.href = "login.html";
+    }
+
+  </script>
+</body>
+
+</html>

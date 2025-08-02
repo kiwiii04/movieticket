@@ -1,0 +1,171 @@
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background-color: #e63946;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+
+.sidebar img {
+    width: 230px;
+    height: 100px;
+    margin: -10px 0 0 -15px;
+}
+
+.sidebar.hidden {
+    margin-left: -250px;
+}
+
+
+.sidebar h4 {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.sidebar .nav-link {
+    color: white;
+    font-weight: 500;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+.sidebar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link.bg-danger {
+    background-color: #00000022;
+    font-weight: 600;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: none;
+    background-color: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.card img {
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 6px 6px 0 0;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1rem;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    min-height: 48px;
+    margin-bottom: 0.1rem;
+}
+
+.card-body .badge {
+    min-height: 24px;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.card-body .btn {
+    margin-top: auto;
+}
+
+.premiere-section {
+    background-color: #2B3149;
+    border-radius: 0;
+    padding: 2rem 1rem;
+    color: white;
+}
+
+.premiere-logo {
+    max-width: 180px;
+    margin-bottom: 1rem;
+}
+
+.premiere-heading {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.premiere-subtext {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+.premiere-card {
+    position: relative;
+    background-color: #1a1c2c;
+    border-radius: 0;
+    overflow: hidden;
+    padding-bottom: 2rem;
+    transition: transform 0.2s;
+}
+
+.premiere-card:hover {
+    transform: translateY(-4px);
+}
+
+.premiere-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.premiere-badge {
+    background-color: #f54b5e;
+    color: white;
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-weight: 600;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.page-content {
+    flex-grow: 1;
+}
+
+footer {
+    background-color: #1e1f20;
+}
+
+.movie-poster {
+    height: 360px;
+    object-fit: cover;
+}
+
+.card img.movie-poster {
+    height: 360px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}

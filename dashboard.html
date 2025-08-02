@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Muzii | Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="dashboard.css" />
+</head>
+
+<body>
+    <button class="btn text-white me-2 d-md-none" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar p-4 text-center text-white">
+            <div class="text-decoration-none mb-1 text-start">
+                <img src="logo.png" alt="Muzii Logo"
+                    style="height: 100px; width: 230px; margin-top: -10px; margin-left: -15px;" />
+                <h4 class="fw-bold mt-1 text-white">Muzii Tickets</h4>
+            </div>
+
+            <ul class="nav flex-column text-start mt-3">
+                <li class="nav-item mb-3">
+                    <a class="nav-link px-3 py-2 fw-semibold bg-dark rounded text-white" href="dashboard.html">
+                        <i class="fas fa-home me-2"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link px-3 py-2 text-white" href="setting.html">
+                        <i class="fas fa-cog me-2"></i> Setting
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link px-3 py-2 text-white" href="order.html">
+                        <i class="fas fa-ticket-alt me-2"></i> Orders
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link px-3 py-2 text-white" href="aboutus.html">
+                        <i class="fas fa-info-circle me-2"></i> About Us
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link px-3 py-2 text-white" href="contactus.html">
+                        <i class="fas fa-envelope me-2"></i> Contact Us
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link px-3 py-2 text-white" href="login.html">
+                        <i class="fas fa-sign-out-alt me-2"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main -->
+        <div class="page-content d-flex flex-column min-vh-100">
+            <!-- Topbar -->
+            <div class="bg-danger text-white py-3 px-4">
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                    <!-- Toggle Button -->
+                    <button class="btn btn-sm btn-light me-2" onclick="toggleSidebar()">
+                        <i class="fas fa-bars text-dark"></i>
+                    </button>
+
+                    <!-- Search bar -->
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <input id="search-input" type="text" class="form-control me-2"
+                            placeholder="Search for movies..." />
+                        <button class="btn btn-light" onclick="searchMovies()"><i
+                                class="fas fa-search text-dark"></i></button>
+                    </div>
+
+                    <!-- Username -->
+                    <div class="username-display" id="user-name">
+                        <i class="fas fa-user-circle me-2"></i> Guest
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Success Message -->
+            <div id="booking-message" class="alert alert-warning text-center fw-bold d-none" role="alert"></div>
+
+            <!-- Recommended Section -->
+            <div class="container-fluid mt-4">
+                <h4 class="fw-bold mb-4">Recommended Movies</h4>
+
+                <div id="no-results-message" class="alert alert-info d-none text-center">No matching movies found.</div>
+
+                <div id="movie-list" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+                    <!-- Movie Card 1 -->
+                    <div class="col">
+                        <div class="card shadow-sm d-flex flex-column">
+                            <img src="https://i0.wp.com/urbanasian.com/wp-content/uploads/2025/07/daabbabf-07b1-401e-acaf-63876363a994.jpeg?w=1024&ssl=1"
+                                class="card-img-top movie-poster" alt="Dhadak 2" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-success mb-2">Blockbuster</span>
+                                <h6 class="card-title">Dhadak 2</h6>
+                                <p class="text-muted small">⭐ 8.4/10 • 3.4K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto" onclick="bookMovie('Dhadak 2')"> Book now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Movie Card 2 -->
+                    <div class="col">
+                        <div class="card shadow-sm d-flex flex-column">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/6/62/Break_the_Silence-_The_Movie.jpg"
+                                class="card-img-top movie-poster" alt="Break the Silence: The Movie" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-success mb-2">Blockbuster</span>
+                                <h6 class="card-title">Break the Silence: The Movie</h6>
+                                <p class="text-muted small">⭐ 9.3/10 • 927.9K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto"
+                                    onclick="bookMovie('Break the Silence: The Movie')">Book now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Movie Card 3 -->
+                    <div class="col">
+                        <div class="card shadow-sm d-flex flex-column">
+                            <img src="https://i.pinimg.com/736x/fb/55/dc/fb55dc632b7a7ffbabf104b1208b27fc.jpg"
+                                class="card-img-top movie-poster" alt="Kalki 2898 AD" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-danger mb-2">Get FLAT 50% off*</span>
+                                <h6 class="card-title">Kalki 2898 AD</h6>
+                                <p class="text-muted small">⭐ 8.1/10 • 13.9K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto" onclick="bookMovie('Kalki 2898 AD')">Book
+                                    now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Movie Card 4 -->
+                    <div class="col">
+                        <div class="card shadow-sm d-flex flex-column">
+                            <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-250,h-390/et00447951-besqwckxum-portrait.jpg"
+                                class="card-img-top movie-poster" alt="Saiyaara" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-info mb-2">New Release</span>
+                                <h6 class="card-title">Saiyaara</h6>
+                                <p class="text-muted small">⭐ 8.9/10 • 193.4K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto" onclick="bookMovie('Saiyaara')">Book
+                                    now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Movie Card 5 -->
+                    <div class="col">
+                        <div class="card shadow-sm d-flex flex-column">
+                            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRjDgQ3_aavt9OVNjE5oa-V3Z8hBJBwXpwFsw9LYT7jfzpTMd_GiAHrpWACHt2KJAgcSPdAqQ"
+                                class="card-img-top movie-poster" alt="Metro In Dino" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-info mb-2">New Release</span>
+                                <h6 class="card-title">Metro In Dino</h6>
+                                <p class="text-muted small">⭐ 7.4/10 • 50.6K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto" onclick="bookMovie('Metro In Dino')">Book
+                                    now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Movie Card 6 -->
+                    <div class="col">
+                        <div class="card shadow-sm d-flex flex-column">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3giEteXGggow1hYtpRIuy3bDLO_Z9aoximYp_tuFK0Bb0N_fnmPaChKv1l_mgBxiiOwN3"
+                                class="card-img-top movie-poster" alt="Jawan" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-danger mb-2">Get FLAT 50% off*</span>
+                                <h6 class="card-title">Jawan</h6>
+                                <p class="text-muted small">⭐ 8.7/10 • 450.6K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto" onclick="bookMovie('Jawan')">Book
+                                    now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Movie Card 7 -->
+                    <div class="col">
+                        <div class="card shadow-sm d-flex flex-column">
+                            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTXaaQGV_PmAM9RZELGt-6Jdp4eY0d-u3gVBZVqrFP1Q-dw9q7uKETGHLB_N_YH9Iu6EfF9xA"
+                                class="card-img-top movie-poster" alt="Billu" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-danger mb-2">Get FLAT 50% off*</span>
+                                <h6 class="card-title">Billu</h6>
+                                <p class="text-muted small">⭐ 7.1/10 • 80.3K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto" onclick="bookMovie('Billu')">Book
+                                    now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Movie Card 8 -->
+                    <div class="col">
+                        <div class="card shadow-sm d-flex flex-column">
+                            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRt3pl1UvRkcjXRZDWi6TJUmasVbZD65WzHPn26h_ptYqvRnzfHbTOENTdPJK9JRlB_rw6y"
+                                class="card-img-top movie-poster" alt="Ra.One" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-success mb-2">Blockbuster</span>
+                                <h6 class="card-title">Ra.One</h6>
+                                <p class="text-muted small">⭐ 9.8/10 • 590.9K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto" onclick="bookMovie('Ra.One')">Book
+                                    now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Movie Card 9 -->
+                    <div class="col">
+                        <div class="card shadow-sm d-flex flex-column">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Ved_film_poster.jpg"
+                                class="card-img-top movie-poster" alt="Ved" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-danger mb-2">Get FLAT 50% off*</span>
+                                <h6 class="card-title">Ved</h6>
+                                <p class="text-muted small">⭐ 8.8/10 • 360.8K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto" onclick="bookMovie('Ved')">Book
+                                    now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Movie Card 10 -->
+                    <div class="col">
+                        <div class="card shadow-sm d-flex flex-column">
+                            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQSVrccYvGdOGpb3REcAS06Nt50qC_1Bl2ANa8BYCUaqYCFvgUBhtNQ0g8sndrDVxJ_c-z_"
+                                class="card-img-top movie-poster" alt="Main Tera Hero" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-danger mb-2">Get FLAT 50% off*</span>
+                                <h6 class="card-title">Main Tera Hero</h6>
+                                <p class="text-muted small">⭐ 7.8/10 • 170.6K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto" onclick="bookMovie('Main Tera Hero')">Book
+                                    now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Premiere Section -->
+            <div class="container-fluid mt-2 premiere-section text-white py-4 px-4">
+                <img src="Premiere.png" alt="Premiere Logo" class="mb-3" style="width: 300px;" />
+                <h2 class="mb-1">Premieres</h2>
+                <p class="text-white mb-3">Brand new releases every Friday</p>
+
+                <div class="d-flex overflow-auto gap-3 px-2 py-1" style="scroll-snap-type: x mandatory;">
+
+                    <!-- Movie Card -->
+                    <div class="card bg-dark text-white border-0" style="min-width: 200px; scroll-snap-align: start;">
+                        <img src="https://m.media-amazon.com/images/M/MV5BZjNkNzE3NjYtMjQ2MS00MjlmLWIzOWUtYTU1YjUwNzA1ODZlXkEyXkFqcGc@._V1_.jpg"
+                            class="card-img-top rounded" alt="Night Silence">
+                        <div class="card-body px-3">
+                            <span class="badge bg-danger mb-2 px-3 py-1 fs-6 rounded">PREMIERE</span>
+                            <h6 class="mb-0">Night Silence</h6>
+                            <small>Polish</small>
+                        </div>
+                    </div>
+
+                    <!-- Movie Card -->
+                    <div class="card bg-dark text-white border-0" style="min-width: 200px; scroll-snap-align: start;">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a3/Haunted_Heart_%28film%29_poster.jpg"
+                            class="card-img-top rounded" alt="Isla Perdida">
+                        <div class="card-body px-3">
+                            <span class="badge bg-danger mb-2 px-3 py-1 fs-6 rounded">PREMIERE</span>
+                            <h6 class="mb-0">Haunted Heart</h6>
+                            <small>Spanish</small>
+                        </div>
+                    </div>
+
+                    <!-- Movie Card -->
+                    <div class="card bg-dark text-white border-0" style="min-width: 200px; scroll-snap-align: start;">
+                        <img src="https://m.media-amazon.com/images/M/MV5BZTI4OTNhMjItNDVhNy00NzI0LTljNzYtOTZiNThjZGVjMWEzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+                            class="card-img-top rounded" alt="Christmas Balls">
+                        <div class="card-body px-3">
+                            <span class="badge bg-danger mb-2 px-3 py-1 fs-6 rounded">PREMIERE</span>
+                            <h6 class="mb-1">Les boules de Noel</h6>
+                            <small>French</small>
+                        </div>
+                    </div>
+
+                    <!-- Movie Card -->
+                    <div class="card bg-dark text-white border-0" style="min-width: 200px; scroll-snap-align: start;">
+                        <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQF9252ldq-zp2LgNYJDZobBxjHEy-Hp2WjZ79gyRqPccJo58V-fA4ZGUfC9ItltouHp5J8QA"
+                            class="card-img-top rounded" alt="The Phoenician Scheme">
+                        <div class="card-body px-3">
+                            <span class="badge bg-danger mb-2 px-3 py-1 fs-6 rounded">PREMIERE</span>
+                            <h6 class="mb-0">The Phoenician Scheme</h6>
+                            <small>English</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Banner -->
+            <div class="container-fluid my-5">
+                <img src="muzii baner.png" alt="Muzii Banner" class="img-fluid rounded"
+                    style="height: 20vh; width: 100%;" />
+
+            </div>
+
+            <!-- Now Showing Section -->
+            <div class="container my-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="fw-bold">Now Showing</h3>
+                    <a href="#" class="text-danger fw-semibold">See All ›</a>
+                </div>
+                <div class="overflow-auto pb-2">
+                    <div id="movie-list" class="d-flex gap-3" style="min-width: max-content;">
+                        <!-- Card 1 -->
+                        <div class="card shadow-sm" style="min-width: 200px;">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Son_of_Sardaar_2_film_poster.jpg/250px-Son_of_Sardaar_2_film_poster.jpg"
+                                class="card-img-top" alt="Son of Sardaar 2" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-danger mb-2">Get FLAT 50% off*</span>
+                                <h6 class="card-title mb-1">Son of Sardaar 2</h6>
+                                <p class="text-muted small mb-2">⭐ 8.4/10 • 3.4K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto"
+                                    onclick="bookMovie('Son of Sardaar 2')">Book now</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="card shadow-sm" style="min-width: 200px;">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLXhHMzfOSt32bDimVFTUONxQYu7KikmEgkovQqPiv6RCY9B4_"
+                                class="card-img-top" alt="Sitaare Zameen Par" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-success mb-2">Blockbuster</span>
+                                <h6 class="card-title mb-1">Sitaare Zameen Par</h6>
+                                <p class="text-muted small mb-2">⭐ 9.1/10 • 12K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto"
+                                    onclick="bookMovie('Sitaare Zameen Par')">Book now</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="card shadow-sm" style="min-width: 200px;">
+                            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRqxN_rXyicI6JFjnOm1lVeoYG0w99CF5uW0NHjpvMaDgil6kVQxZ76qTQXu0V10D_WwBhGPg"
+                                class="card-img-top" alt="Inside Out 2" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-info mb-2">New Release</span>
+                                <h6 class="card-title mb-1">Inside Out 2</h6>
+                                <p class="text-muted small mb-2">⭐ 8.7/10 • 5.6K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto" onclick="bookMovie('Inside Out 2')">Book
+                                    now</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="card shadow-sm" style="min-width: 200px;">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/b/b6/The_Chase_%282017_film%29_-_poster.jpg"
+                                class="card-img-top" alt="The Chase" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-info mb-2">New Release</span>
+                                <h6 class="card-title mb-1">The Chase</h6>
+                                <p class="text-muted small mb-2">⭐ 9.6/10 • 15.9K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto" onclick="bookMovie('The Chase')">Book
+                                    now</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="card shadow-sm" style="min-width: 200px;">
+                            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR4zmTTtl3mhJeKMKNckSFkjapJ9xe-sRoztmQrejDO1H0xx75o"
+                                class="card-img-top" alt="Midnight" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-success mb-2">Blockbuster</span>
+                                <h6 class="card-title mb-1">Midnight</h6>
+                                <p class="text-muted small mb-2">⭐ 9.7/10 • 450.6K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto" onclick="bookMovie('Midnight')">Book
+                                    now</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="card shadow-sm" style="min-width: 200px;">
+                            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSj8g4ubfQdQcjMjFmpaQPuAnMecrXz7WPAr09NACB04702i3oj"
+                                class="card-img-top" alt="The Buckingham Murders" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-danger mb-2">Get FLAT 50% off*</span>
+                                <h6 class="card-title mb-1">The Buckingham Murders</h6>
+                                <p class="text-muted small mb-2">⭐ 5.7/10 • 10.6K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto"
+                                    onclick="bookMovie('The Buckingham Murders')">Book now</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="card shadow-sm" style="min-width: 200px;">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/3/36/Door_Lock_%282018_film%29.jpg"
+                                class="card-img-top" alt="Door Lock" />
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge bg-info mb-2">New Release</span>
+                                <h6 class="card-title mb-1">Door Lock</h6>
+                                <p class="text-muted small mb-2">⭐ 8.9/10 • 17.6K Votes</p>
+                                <button class="btn btn-primary w-100 mt-auto" onclick="bookMovie('Door Lock')">Book
+                                    now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer py-4 text-light mt-auto w-100 bg-dark">
+                <div class="container-fluid text-center">
+                    <div class="mb-2">
+                        <a href="aboutus.html" class="text-light text-decoration-none me-2">About Us</a> |
+                        <a href="contactus.html" class="text-light text-decoration-none mx-2">Contact Us</a> |
+                        <a href="#" class="text-light text-decoration-none mx-2">Terms</a> |
+                        <a href="#" class="text-light text-decoration-none ms-2">Privacy</a>
+                    </div>
+                    <p class="mb-0">© 2025 Muzii Tickets. All Rights Reserved.</p>
+                </div>
+            </footer>
+
+            <script>
+                const username = localStorage.getItem("username") || "Guest";
+                const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+                document.getElementById("user-name").innerHTML = `<i class="fas fa-user-circle me-2"></i> ${username}`;
+
+                if (!isLoggedIn) {
+                    window.location.href = "login.html";
+                }
+
+                function logoutUser() {
+                    localStorage.clear();
+                    window.location.href = "login.html";
+                }
+
+                function bookMovie(movieName) {
+                    localStorage.setItem("selectedMovie", movieName);
+                    window.location.href = "book.html";
+                }
+
+                const message = localStorage.getItem("bookingSuccess");
+                if (message) {
+                    const msgBox = document.getElementById("booking-message");
+                    msgBox.innerText = message;
+                    msgBox.classList.remove("d-none");
+
+                    setTimeout(() => {
+                        msgBox.classList.add("d-none");
+                        localStorage.removeItem("bookingSuccess");
+                    }, 3000);
+                }
+
+                function toggleSidebar() {
+                    document.getElementById("sidebar").classList.toggle("hidden");
+                }
+
+                // Search only Recommended Movies
+                function searchMovies() {
+                    const input = document.getElementById("search-input").value.toLowerCase().trim();
+                    const recommendedCards = document.querySelectorAll("#movie-list .col");
+                    const noResults = document.getElementById("no-results-message");
+
+                    let found = false;
+
+                    recommendedCards.forEach(col => {
+                        const title = col.querySelector(".card-title").textContent.toLowerCase();
+                        const match = title.includes(input);
+                        col.style.display = match ? "" : "none";
+                        if (match) found = true;
+                    });
+
+                    noResults.classList.toggle("d-none", found || input === "");
+                }
+
+                // Trigger search on Enter key
+                document.getElementById("search-input").addEventListener("keyup", function (event) {
+                    if (event.key === "Enter") {
+                        searchMovies();
+                    }
+                });
+            </script>
+
+
+</body>
+
+</html>

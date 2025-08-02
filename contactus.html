@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us - CineWorld</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .form-section {
+            max-width: 1000px;
+            margin: 60px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 6.8px;
+        }
+
+        .btn-submit {
+            background-color: #e63946;
+            color: #fff;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 8px;
+            border: none;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #c92f3e;
+        }
+
+        .side-note {
+            font-size: 1rem;
+            color: #444;
+            background: #fceff0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .side-note strong {
+            display: block;
+            font-size: 1.2rem;
+            color: #d62828;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+        }
+
+        footer a {
+            color: #ccc;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container form-section">
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-md-7">
+                <!-- Logo before heading -->
+                <img src="logo.png" alt="Muzii Logo"
+                    style="width: 300px; height: 100px;margin-top: 0.1%; margin-bottom: 10px; ">
+                <p class="text-muted mb-4">Let us know how we can support your movie experience.</p>
+                <form>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Full Name *" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Email Address *" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" class="form-control" placeholder="Mobile Number *" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="4" placeholder="Describe your issue *" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Submit Request</button>
+                </form>
+            </div>
+
+            <!-- Movie Help Info -->
+            <div class="col-md-5 ps-md-5 mt-5 mt-md-0">
+                <div class="side-note">
+                    <strong>🎟️ Booking issues? Need a refund?</strong>
+                    Whether it's a missed showtime, payment issue, or something else — we’re ready to assist.
+                    <br><br>
+                    Fill out the form or drop us a note. Your cinematic journey matters to us!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer py-4 text-light mt-auto w-100">
+        <div class="container-fluid text-center">
+            <div class="mb-2">
+                <a href="aboutus.html" class="text-decoration-none me-2">About Us</a> |
+                <a href="contactus.html" class="text-decoration-none mx-2">Contact Us</a> |
+                <a href="#" class="text-decoration-none mx-2">Terms</a> |
+                <a href="#" class="text-decoration-none ms-2">Privacy</a>
+            </div>
+            <p class="mb-0">© 2025 Muzii Tickets. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

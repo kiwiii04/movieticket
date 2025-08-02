@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muzii | Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f7fafa;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .topbar {
+            background-color: #e63946;
+            padding: 1rem;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .admin-table {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-table th {
+            color: #e63946;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        Muzii Admin Panel – Manage User Bookings
+    </div>
+
+    <div class="admin-table">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Movie</th>
+                    <th>Seats</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="ticketBody"></tbody>
+        </table>
+    </div>
+
+    <script>
+        const ticketBody = document.getElementById("ticketBody");
+        let tickets = JSON.parse(localStorage.getItem("userTickets")) || [];
+
+        function renderTickets() {
+            ticketBody.innerHTML = "";
+            tickets.forEach((ticket, index) => {
+                ticketBody.innerHTML += `
+          <tr>
+            <td><input class="form-control" value="${ticket.user}" disabled /></td>
+            <td><input class="form-control" value="${ticket.movie}" onchange="updateField(${index}, 'movie', this.value)" /></td>
+            <td><input class="form-control" value="${ticket.seats}" onchange="updateField(${index}, 'seats', this.value)" /></td>
+            <td><input type="date" class="form-control" value="${ticket.date}" onchange="updateField(${index}, 'date', this.value)" /></td>
+            <td><input class="form-control" value="${ticket.time}" onchange="updateField(${index}, 'time', this.value)" /></td>
+            <td>
+              <button class="btn btn-success btn-sm" onclick="saveTickets()">Save</button>
+              <button class="btn btn-danger btn-sm" onclick="deleteTicket(${index})">Delete</button>
+            </td>
+          </tr>
+        `;
+            });
+        }
+
+        function updateField(index, field, value) {
+            tickets[index][field] = value;
+        }
+
+        function saveTickets() {
+            localStorage.setItem("userTickets", JSON.stringify(tickets));
+            alert("Changes saved!");
+            renderTickets();
+        }
+
+        function deleteTicket(index) {
+            if (confirm("Are you sure you want to delete this ticket?")) {
+                tickets.splice(index, 1);
+                saveTickets();
+            }
+        }
+
+        renderTickets();
+    </script>
+</body>
+
+</html>

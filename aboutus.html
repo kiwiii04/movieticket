@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - CineWorld</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .about-section {
+            position: relative;
+            background-color: #e63946;
+            color: #fff;
+            padding: 40px 30px 150px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: "";
+            background: url('your-image-path.jpg') center center/cover no-repeat;
+            opacity: 0.7;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .about-section h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .about-section p {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .custom-shape-divider-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .custom-shape-divider-bottom svg {
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 120px;
+        }
+
+        .custom-shape-divider-bottom .shape-fill {
+            fill: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="about-section">
+        <div class="container">
+            <h2>ABOUT US</h2>
+            <p>
+                Muzii Tickets was created with a simple vision — to make moviegoing seamless, exciting, and accessible
+                for everyone.
+                From thrilling blockbusters to independent masterpieces, we connect movie lovers with unforgettable
+                big-screen experiences.
+
+                <br><br>
+
+                With a user-friendly platform, real-time booking, and exclusive offers, Muzii Tickets brings convenience
+                and entertainment together like never before.
+                We’re not just about tickets — we’re about creating moments, supporting cinemas, and making every seat
+                count in your journey through stories.
+
+            </p>
+        </div>
+
+        <!-- Curve Divider -->
+        <div class="custom-shape-divider-bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M1200 0L0 0 892.25 114.72 1200 0z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-us py-5 bg-white">
+        <div class="container d-flex flex-wrap align-items-center justify-content-center gap-4">
+
+            <!-- Image-->
+            <div class="about-images">
+                <img src="https://images.unsplash.com/photo-1635400138431-0bbde4d01484?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Cinema Ticket Kiosk" class="img-fluid rounded shadow"
+                    style="max-width: 250px; margin-left: -60px; position: relative; top: -40px;">
+                <img src="https://images.unsplash.com/photo-1563381013529-1c922c80ac8d?q=80&w=1413&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Cinema Lobby" class="img-fluid rounded shadow mb-3"
+                    style="max-width: 360px; max-height: 350px;">
+            </div>
+
+            <!-- Text -->
+            <div class="about-text" style="max-width: 600px;">
+                <p class="fst-italic text-dark">
+                    <strong>Muzii Tickets</strong> was founded with a mission to revolutionize how audiences connect
+                    with cinema.
+                    From a simple idea to simplify bookings, we’ve grown into one of the most trusted and loved movie
+                    ticketing platforms.
+
+                    <br><br>
+
+                    With seamless access to showtimes, instant booking, and curated experiences,
+                    Muzii Tickets continues to transform how moviegoers discover and enjoy films. Whether it's the
+                    latest blockbuster, a fan-favorite re-release, or a hidden indie gem — we make it easier to never
+                    miss a moment.
+
+                    <br><br>
+
+                    We’re proud to offer fast digital ticketing, real-time availability, exclusive deals, and
+                    personalized recommendations —
+                    all backed by a team that loves storytelling as much as you do. Welcome to a smarter way to enjoy
+                    cinema.
+
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-4 text-light bg-dark mt-auto w-100">
+        <div class="container-fluid text-center">
+            <div class="mb-2">
+                <a href="aboutus.html" class="text-light text-decoration-none me-2">About Us</a> |
+                <a href="contactus.html" class="text-light text-decoration-none mx-2">Contact Us</a> |
+                <a href="#" class="text-light text-decoration-none mx-2">Terms</a> |
+                <a href="#" class="text-light text-decoration-none ms-2">Privacy</a>
+            </div>
+            <p class="mb-0">© 2025 Muzii Tickets. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
